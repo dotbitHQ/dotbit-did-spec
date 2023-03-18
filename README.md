@@ -122,16 +122,14 @@ For `did:dotbit:satoshi.bit` (with no records added), the DID Document would loo
   "verificationMethod": [{
     "id": "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7",
     "type": "EcdsaSecp256k1RecoveryMethod2020",
-    "controller": "did:dotbit:satoshi.bit",
-    "blockchainAccountId": "eip155:1:0xab16a96d359ec26a11e2c2b3d8f8b8942d5bfcdb"
+    "controller": "did:dotbit:satoshi.bit"
   }],
   "service": [{
     "id":"did:dotbit:satoshi.bit#Web3PublicProfile-5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7",
     "type": "Web3PublicProfile", 
     "serviceEndpoint": { 
       "profileService": "dotbit",
-      "dotbitName": "satoshi.bit",
-      "network": "mainnet" 
+      "dotbitName": "satoshi.bit"
     }
   }],
   "authentication": [
@@ -163,8 +161,7 @@ For `did:dotbit:satoshi.bit` with DID specific records added, the DID Document w
   "verificationMethod": [{
       "id": "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7",
       "type": "EcdsaSecp256k1RecoveryMethod2020",
-      "controller": "did:dotbit:satoshi.bit",
-      "blockchainAccountId": "eip155:1:0xab16a96d359ec26a11e2c2b3d8f8b8942d5bfcdb"
+      "controller": "did:dotbit:satoshi.bit"
     },
     {
       "id": "did:dotbit:satoshi.bit#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
@@ -178,8 +175,7 @@ For `did:dotbit:satoshi.bit` with DID specific records added, the DID Document w
     "type": "Web3PublicProfile", 
     "serviceEndpoint": { 
       "profileService": "dotbit",
-      "dotbitName": "satoshi.bit",
-      "network": "mainnet" 
+      "dotbitName": "satoshi.bit"
     }
   }],
   "authentication": [
@@ -202,8 +198,8 @@ For `did:dotbit:satoshi.bit` with DID specific records added, the DID Document w
 
 The following records have to be set:
 
-- `org.w3c.did.verificationRelationship`
-- `org.w3c.did:verificationMethod`
+- `profile.w3c.did.verificationRelationship`
+- `profile.w3c.did:verificationMethod`
 
 ### UPDATE
 
