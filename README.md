@@ -1,4 +1,4 @@
-# .bit(dotbit) DID Spec
+# .bit (dotbit) DID Spec
 # Authors
 
 - [Jeff Jing](https://github.com/zgayjjf) ([.bit](https://did.id))
@@ -7,14 +7,13 @@
 
 .bit (dotbit) is a distributed, open-source, and DID naming system on the Nervos blockchain.
 
-.bit's goal is to map human-readable names like `satoshi.bit` to machine-readable identifiers such as blockchain addresses or social profile names.
+The goal of .bit is to map human-readable names like `satoshi.bit` to machine-readable identifiers, such as blockchain addresses or social profile names.
 
-Unlike other naming systems, .bit allows users to use .bit with different blockchain address, such as Ethereum addresses, Tron addresses or even Dogecoin addresses.
-
+Unlike other naming systems, .bit allows users to use .bit with different blockchain addresses, such as Ethereum addresses, Tron addresses, or even Dogecoin addresses.
 
 This DID method specification has two purposes:
-1. to wrap existing .bit account as DIDs to be interoperable with applications relying on Decentralized Identifiers
-2. to define a canonical way to augment .bit names with DID capabilities such as services and verification methods.
+1. To wrap existing .bit accounts as DIDs to be interoperable with applications relying on Decentralized Identifiers.
+2. To define a canonical way to augment .bit names with DID capabilities such as services and verification methods.
 
 ## DID Method Name
 
@@ -31,7 +30,7 @@ A DID that uses this method MUST begin with the following prefix: `did:dotbit`. 
   name    := <.bit-name>
 ```
 
-The characters of name segment has several charset to choose from. Here is the rules: [Charset](https://docs.did.id/register-das/charsets)
+The characters of the name segment have several character sets to choose from. Here are the rules: [Charset](https://docs.did.id/register-das/charsets)
 
 ### Examples
 
@@ -41,6 +40,7 @@ The characters of name segment has several charset to choose from. Here is the r
 - ...
 ```
 
+
 ## CRUD Operations
 
 .bit accounts can have `custom_key` records. This specification defines some `custom_key` record names that will have an impact on DID resolution of .bit DIDs.
@@ -49,7 +49,7 @@ The following named records are defined:
 
 - `profile.w3c.did.service`
 
-  OPTIONAL. A set of [services](https://www.w3.org/TR/did-core/#services) as per W3C DID Core specification. The service `id` property MAY be omitted. In that case the DID resolver will generate a canonical value for the specific service entry.
+  OPTIONAL. A set of [services](https://www.w3.org/TR/did-core/#services) as per W3C DID Core specification. The service `id` property MAY be omitted. In that case, the DID resolver will generate a canonical value for the specific service entry.
 
   > NOTE: the .bit service will be automatically propagated as a service during DID resolution.
 
@@ -61,7 +61,7 @@ The following named records are defined:
 
 - `profile.w3c.did.verificationRelationship`
 
-  OPTIONAL. A map of [verification relationship](https://www.w3.org/TR/did-core/#verification-relationships) as per W3C DID Core specification to a set of verification relationship identifiers (`id` property).
+  OPTIONAL. A map of [verification relationships](https://www.w3.org/TR/did-core/#verification-relationships) as per W3C DID Core specification to a set of verification relationship identifiers (`id` property).
 
   >NOTE: the verification method that relates to the owner of the .bit account can be used for all verification relationships.
 
@@ -84,9 +84,7 @@ The default verification method will always include the owner of the .bit accoun
   "blockchainAccountId": "<CAIP-10>"
 }
 ```
-
-The `id` of the default verification method is the concatenation of the .bit DID followed by the `#` and the hex representation of `sha256(blockchainAccountId)`. todo
-Additional verification methods that MAY be added MUST not use that verification method `id` and will be ignored in the DID Document.
+The `id` of the default verification method is formed by concatenating the .bit DID with the `#` symbol and the hexadecimal representation of `sha256(blockchainAccountId)`. Additional verification methods that MAY be added MUST NOT use that specific verification method `id` and will be ignored in the DID Document.
 
 The default service will always include the .bit service as follows:
 
@@ -96,21 +94,20 @@ The default service will always include the .bit service as follows:
   "type": "Web3PublicProfile", 
   "serviceEndpoint": { 
     "profileService": "dotbit",
-    "dotbitAccount": "<dotbit-account>",
-    "network": "mainnet" 
+    "dotbitAccount": "<dotbit-account>"
   }
 }
 ```
 
-The `id` of the default service is the concatenation of the .bit DID followed by the `#Web3PublicProfile-` and the hex representation of `sha256(blockchainAccountId)`. Additional services that MAY be added MUST not use that service `id` and will be ignored in the DID Document.
+The `id` of the default service is formed by concatenating the .bit DID with the `#Web3PublicProfile-` and the hexadecimal representation of `sha256(blockchainAccountId)`. Additional services that MAY be added MUST NOT use that specific service `id` and will be ignored in the DID Document.
 
-If the DID specific records are malformed, the entire record will be ignored in the DID resolution process.
+If the DID specific records are malformed, the entire record will be ignored during the DID resolution process.
 
-See .bit on how to resolve .bit accounts and how to resolve records for .bit accounts.
+Refer to .bit documentation on how to resolve .bit accounts and how to resolve records for .bit accounts.
 
 #### Example (no records)
 
-For `did:dotbit:satoshi.bit` (with no records added), the DID Document would look as follows:
+For `did:dotbit:satoshi.bit` (with no records added), the DID Document would appear as follows:
 
 ```json
 {
@@ -118,14 +115,13 @@ For `did:dotbit:satoshi.bit` (with no records added), the DID Document would loo
     "https://www.w3.org/ns/did/v1",
   ],
   "id": "did:dotbit:satoshi.bit",
-  "canonicalId": "did:dotbit:satoshi.bit",
   "verificationMethod": [{
-    "id": "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7",
+    "id": "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8",
     "type": "EcdsaSecp256k1RecoveryMethod2020",
     "controller": "did:dotbit:satoshi.bit"
   }],
   "service": [{
-    "id":"did:dotbit:satoshi.bit#Web3PublicProfile-5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7",
+    "id":"did:dotbit:satoshi.bit#Web3PublicProfile-5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8",
     "type": "Web3PublicProfile", 
     "serviceEndpoint": { 
       "profileService": "dotbit",
@@ -133,21 +129,21 @@ For `did:dotbit:satoshi.bit` (with no records added), the DID Document would loo
     }
   }],
   "authentication": [
-    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7"
+    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8"
   ],
   "assertionMethod": [
-    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7"
+    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8"
   ],
   "capabilityInvocation": [
-    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7"
+    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8"
   ],
   "capabilityDelegation": [
-    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7"
+    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8"
   ]
 }
 ```
 
-#### Example (with keyAgreement)
+#### Example
 
 For `did:dotbit:satoshi.bit` with DID specific records added, the DID Document would look as follows:
 
@@ -159,19 +155,19 @@ For `did:dotbit:satoshi.bit` with DID specific records added, the DID Document w
   "id": "did:dotbit:satoshi.bit",
   "canonicalId": "did:dotbit:satoshi.bit",
   "verificationMethod": [{
-      "id": "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7",
+      "id": "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8",
       "type": "EcdsaSecp256k1RecoveryMethod2020",
       "controller": "did:dotbit:satoshi.bit"
     },
     {
-      "id": "did:dotbit:satoshi.bit#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS",
+      "id": "did:dotbit:satoshi.bit#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTd8",
       "type": "X25519KeyAgreementKey2019", 
       "controller": "did:dotbit:satoshi.bit",
-      "publicKeyMultibase": "z9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDXE" 
+      "publicKeyMultibase": "z9hFgmPVfmBZwRvFEyniQDBkz9LmV7gDEqytWyGZLmDX8" 
     }
   ],
   "service": [{
-    "id":"did:dotbit:satoshi.bit#Web3PublicProfile-5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7",
+    "id":"did:dotbit:satoshi.bit#Web3PublicProfile-5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8",
     "type": "Web3PublicProfile", 
     "serviceEndpoint": { 
       "profileService": "dotbit",
@@ -179,38 +175,38 @@ For `did:dotbit:satoshi.bit` with DID specific records added, the DID Document w
     }
   }],
   "authentication": [
-    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7"
+    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8"
   ],
   "assertionMethod": [
-    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7"
+    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8"
   ],
   "capabilityInvocation": [
-    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7"
+    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8"
   ],
   "capabilityDelegation": [
-    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d7"
+    "did:dotbit:satoshi.bit#5d3e82eaba0bf8991c38bd092fa5f5523b5b3bf13e06b4b29c0022a094a528d8"
   ],
   "keyAgreement": [
-    "did:dotbit:satoshi.bit#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTdS"  
+    "did:dotbit:satoshi.bit#zC9ByQ8aJs8vrNXyDhPHHNNMSHPcaSgNpjjsBYpMMjsTd8"  
   ]
 }
 ```
 
-The following records have to be set:
+The following records must be set:
 
 - `profile.w3c.did.verificationRelationship`
 - `profile.w3c.did:verificationMethod`
 
 ### UPDATE
 
-See [.bit docs](https://docs.did.id/technical-details/data-container) on how to add records.
+Refer to [.bit docs](https://docs.did.id/technical-details/data-container) for information on adding records.
 
-When any data (e.g. W3C Verifiable Credentials) is associated with .bit DIDs, sharing that data would also impose sharing the onchain data graph (e.g. transaction history, NFTs etc.) of the blockchain address that owns the .bit account.
+When any data (e.g., W3C Verifiable Credentials) is associated with .bit DIDs, sharing that data also implies sharing the on-chain data graph (e.g., transaction history, NFTs, etc.) of the blockchain address owning the .bit account.
 
-Using personal identifiable information as DID Method specific identifiers (e.g. alice.bit) discloses personal information every time the DID is shared with a counter party. This specification DOES NOT endorse the use of .bit accounts that correlate directly with real world human beings.
+Using personally identifiable information as DID Method-specific identifiers (e.g., alice.bit) discloses personal information each time the DID is shared with a counterparty. This specification DOES NOT endorse the use of .bit accounts that directly correlate with real-world human beings.
 
-> NOTE: The .bit community is already using .bit accounts for individuals (e.g. alice.bit).
+> NOTE: The .bit community is already using .bit accounts for individuals (e.g., alice.bit).
 
 ## Security Considerations
 
-.bit accounts are non-fungible and transferrable. When the owner of the .bit account changes, the authorative keys will also change. This needs to be considered when used in conjunction with verifiable data where the DID is embedded, e.g., W3C Verifiable Credentials.
+.bit accounts are non-fungible and transferable. When the owner of the .bit account changes, the authoritative keys will also change. This must be considered when used in conjunction with verifiable data where the DID is embedded, e.g., W3C Verifiable Credentials.
