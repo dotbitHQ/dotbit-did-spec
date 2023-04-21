@@ -203,7 +203,7 @@ The following records have to be set:
 
 ### UPDATE
 
-See [.bit docs](https://docs.did.id/technical-details/permissions) on how to add records.
+See [.bit docs](https://docs.did.id/technical-details/data-container) on how to add records.
 
 When any data (e.g. W3C Verifiable Credentials) is associated with .bit DIDs, sharing that data would also impose sharing the onchain data graph (e.g. transaction history, NFTs etc.) of the blockchain address that owns the .bit account.
 
