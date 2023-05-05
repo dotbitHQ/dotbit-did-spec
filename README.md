@@ -207,6 +207,24 @@ Using personally identifiable information as DID Method-specific identifiers (e.
 
 > NOTE: The .bit community is already using .bit accounts for individuals (e.g., alice.bit).
 
+### Deactivate
+Since .bit is deployed on the blockchain and is fully decentralized, it does not have a default mechanism to "delete" accounts.
+
+However, due to the use of an annual fee mechanism, a .bit account will expire and become deactivated if it is not renewed. Grace periods will apply during which the account can be restored.
+
+It is important to note that if a .bit account is deactivated, it may be registered by another entity in the future, which is known as the "identifier recycling problem." This means that a DID cannot be assumed to be a persistent identifier for the same DID subject. In this case, versioning should also be added in accordance with DID Core.
+
 ## Security Considerations
 
-.bit accounts are non-fungible and transferable. When the owner of the .bit account changes, the authoritative keys will also change. This must be considered when used in conjunction with verifiable data where the DID is embedded, e.g., W3C Verifiable Credentials.
+The .bit accounts are non-fungible and transferable, and all write operations must be authorized by the corresponding private key that corresponds to the public key specified in the DID document.
+
+The document is secured by the blockchain ledger's security mechanism, so replay, eavesdropping, denial-of-service, man-in-the-middle, message insertion, deletion, and modification attacks impossible. Only one of the controllers who possess the related private key can make any necessary modifications.
+
+When the owner of a .bit account changes, the authoritative keys will also change, and this must be taken into consideration when used in conjunction with verifiable data such as W3C Verifiable Credentials in which the DID is embedded.
+
+## Privacy Considerations
+When any data, such as W3C Verifiable Credentials, is associated with an .bit DID, the sharing of that data also impose the sharing of the on-chain data graph of the blockchain address that owns the .bit name, including transaction history, NFTs, and other related data.
+
+The use of personal identifiable information, such as alice.bit, as DID method-specific identifiers poses a risk to the privacy of individuals. Every time the DID is shared with a counterparty, personal information is disclosed, potentially putting the individual at risk of identity theft, fraud, and other malicious activities. It is important to note that this specification does not endorse the use of .bit names that are directly correlated with real-world human beings.
+
+It is worth mentioning that the .bit community has already adopted .bit names for individuals, such as jeffx.bit. While the use of .bit names can provide a convenient way for individuals to interact with the blockchains, it is important for users to understand the potential risks associated with the use of personal identifiable information as DID method-specific identifiers.
